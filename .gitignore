@@ -1,0 +1,12 @@
+# Compilaciones de Python
+*.pyc
+*/*.pyc
+*.pyc
+
+#Visual Studio Code
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
