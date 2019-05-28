@@ -5,6 +5,12 @@ import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 
+def index(request):
+    context = {
+        'mensaje': 'Generar pdf'
+    }
+    return render(request, 'library/index.html', context)
+
 def some_view(request):
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer)
