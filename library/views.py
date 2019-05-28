@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 import io
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 from reportlab.pdfgen import canvas
 
 def index(request):
@@ -20,3 +20,14 @@ def some_view(request):
     p.save()
 
     return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+
+def generate_csv(request):
+    import csv
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="hola.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Primera fila', 'Norma', 'Navarrete'])
+    writer.writerow(['Segunda fila', 'A', 'B'])
+
+    return response
